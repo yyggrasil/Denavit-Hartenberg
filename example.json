@@ -1,0 +1,19 @@
+{
+    "name": "ROBOT",
+    "joints": [
+        {
+            "type": "revolute",
+            "a": 175,
+            "alpha": 0,
+            "d": 228,
+            "theta": "theta1"
+        },
+        {
+            "type": "prismatic",
+            "a": 0,
+            "alpha": 0,
+            "d": "d3",
+            "theta": 0
+        }
+    ]
+}
