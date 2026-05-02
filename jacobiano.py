@@ -149,7 +149,7 @@ def calculate_jacobian_from_json(json_file):
     sp.pprint(J)
     
     # Salvar em CSV
-    csv_filename = f"jacobiana_{robot_data.get('name', 'robo').replace(' ', '_')}.csv"
+    csv_filename = f"output/jacobiana_{robot_data.get('name', 'robo').replace(' ', '_')}.csv"
     try:
         with open(csv_filename, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
@@ -160,7 +160,7 @@ def calculate_jacobian_from_json(json_file):
         print(f"\n[-] Erro ao salvar arquivo CSV: {e}")
         
     print("\n========= MATRIZES ÔMEGA =========")
-    omega_csv_filename = f"matrizes_omega_{robot_data.get('name', 'robo').replace(' ', '_')}.csv"
+    omega_csv_filename = f"output/matrizes_omega_{robot_data.get('name', 'robo').replace(' ', '_')}.csv"
     try:
         with open(omega_csv_filename, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)

@@ -1,8 +1,3 @@
-/IRB_1300.json
-/IRB_910.json
-/jacobiana_IRB_1300.csv
-/jacobiana_IRB_910.csv
-/jacobiano_e_omega.zip
-/matrizes_omega_IRB_1300.csv
-/matrizes_omega_IRB_910.csv
+robots/
+output/
 /venv
