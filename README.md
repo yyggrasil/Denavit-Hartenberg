@@ -73,8 +73,8 @@ Exemplo de estrutura:
 Ao rodar o script, ele realizará os seguintes passos e gerará as respectivas saídas:
 
 1. **Saída no Console**:
-   - Imprime a Matriz Jacobiana ($J$) analítica simplificada do manipulador.
-   - Imprime as Matrizes Ômega ($\Omega$) simplificadas de cada junta.
+   - Imprime a Matriz Jacobiana (J) analítica simplificada do manipulador.
+   - Imprime as Matrizes Ômega (Omega) simplificadas de cada junta.
 2. **Geração de Arquivos CSV**:
-   - `jacobiana_<nome_do_robo>.csv`: Arquivo contendo a matriz Jacobiana (6 linhas por $N$ colunas, onde $N$ é o número de juntas).
+   - `jacobiana_<nome_do_robo>.csv`: Arquivo contendo a matriz Jacobiana (6 linhas por N colunas, onde N é o número de juntas).
    - `omega_<nome_do_robo>.csv`: Arquivo contendo as Matrizes Ômega de 3x3 para cada junta organizadas de forma sequencial.
