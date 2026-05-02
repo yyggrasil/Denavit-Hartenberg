@@ -51,7 +51,7 @@ Exemplo de estrutura:
         {
             "type": "prismatic",
             "a": 0,
-            "alpha": "-pi/2",
+            "alpha": "-90",
             "d": "d2",
             "theta": 0
         }
