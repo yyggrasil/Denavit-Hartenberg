@@ -88,13 +88,18 @@ def calculate_jacobian_from_json(json_file):
     
     # 1. Passo Direto da Cinemática - Calcula posições e eixos para todas as juntas
     print("Calculando as matrizes de transformações homogêneas...")
+    A_list = []
+    T_list = []
     for i in range(n_joints):
         dh = joints[i]
         A_i = get_dh_matrix(dh['theta'], dh['d'], dh['a'], dh['alpha'])
+        A_i_simplified = sp.simplify(A_i)
+        A_list.append(A_i_simplified)
         T = T * A_i
         
         # Opcional: tentar simplificar no meio do caminho para acelerar o processo final
         T = sp.simplify(T) 
+        T_list.append(T)
         
         # Extrair z_i (terceira coluna das submatriz de rotação, elementos 0 a 2)
         z_i = T[0:3, 2] 
@@ -175,6 +180,31 @@ def calculate_jacobian_from_json(json_file):
         print(f"[+] Matrizes Ômega salvas com sucesso no arquivo: {omega_csv_filename}")
     except Exception as e:
         print(f"[-] Erro ao salvar arquivo CSV das Matrizes Ômega: {e}")
+
+    print("\n========= MATRIZES DE TRANSFORMAÇÃO =========")
+    transf_csv_filename = f"output/transformacoes_{robot_data.get('name', 'robo').replace(' ', '_')}.csv"
+    try:
+        with open(transf_csv_filename, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            for i in range(n_joints):
+                print(f"Matriz de Transformação da Junta {i+1} (A_{i+1}):")
+                sp.pprint(A_list[i])
+                print()
+                
+                writer.writerow([f"Matriz A_{i+1}"])
+                writer.writerows(A_list[i].tolist())
+                writer.writerow([])
+                
+                print(f"Matriz de Transformação Acumulada (T_0^{i+1}):")
+                sp.pprint(T_list[i])
+                print()
+                
+                writer.writerow([f"Matriz Acumulada T_0^{i+1}"])
+                writer.writerows(T_list[i].tolist())
+                writer.writerow([])
+        print(f"[+] Matrizes de Transformação salvas com sucesso no arquivo: {transf_csv_filename}")
+    except Exception as e:
+        print(f"[-] Erro ao salvar arquivo CSV das Matrizes de Transformação: {e}")
 
     print("======================================")
     
